@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{% block title %}{% endblock %}</title>
+    <title>t</title>
 
     <style>
       body {
@@ -20,10 +20,10 @@
       }
       
       #banner {
-        background-color: #243246;
+        background-color: lightgray;
         text-align: center;
         padding: 10px;
-        height: 50px;
+        height: 70px;
       }
       
       #banner img {
@@ -32,6 +32,7 @@
         max-height: 60px;
         max-width: 100%;
         height: auto;
+        top: 5px;
       }
       
       main {
@@ -47,6 +48,20 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+      }
+      
+     .rectangle {
+        position: absolute;
+        width: 930px;
+        height: 570px;
+        top: 15%;
+        left: 20%;
+        background-color: green;
+        z-index: -1;
+        border: 2px solid #282828;
+        box-sizing: border-box;
+        background-color: transparent;
+        border-radius: 20px;
       }
       
       .footer-section {
@@ -76,6 +91,10 @@
         top: 0;
         right: 0;
       }
+
+      html {
+        overflow: hidden;
+      }
     </style>
 
   </head>
@@ -86,11 +105,11 @@
 
     <main>
       <div id="left-column"></div>
-
+      <div class="rectangle"></div>
       <div id="right-column"></div>
       
       <div style="width: 60%; margin: 0 auto;">
-        <p> <!-- main content --></p>
+        <div> <!-- main content --></dv>
       </div>
     </main>
 
