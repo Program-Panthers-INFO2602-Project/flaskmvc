@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+{% block title %}SignUp{% endblock %}
+
+{% block styles %}
+.btn-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 175px;
+}
+
+.btn {
+background-color: #6dbfb8;
+border: none;
+height:150px;
+width:250px;
+color: black;
+padding: 10px 20px;
+text-align: center;
+vertical-align: middle;
+text-decoration: none;
+display: inline-block;
+font-size: 32px;
+margin: 20px;
+border-radius: 20px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+#banner{
+height: 110px;
+}
+
+#banner img{
+max-height: 100%;
+}
+{% endblock %}
+
+{% block content %}
+<form class="signupForm">
+    <div class="btn-container">
+        <button class="btn">Competitor</button>
+        <button class="btn">Coordinator</button>
+    </div>
+</form>
+{% endblock %}
