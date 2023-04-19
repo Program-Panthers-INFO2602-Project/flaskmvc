@@ -1,0 +1,128 @@
+{% extends "layout.html" %}
+{% block title %}Results Manager{% endblock %}
+
+{% block styles %}
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  nav li {
+    margin: 0 10px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links-left {
+    margin-right: auto;
+  }
+  
+  .nav-links-right {
+    margin-left: auto;
+  }
+  
+  .nav-links li {
+    margin: 0 10px;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  #header {
+    text-align: center;
+    margin-top:60px;
+    padding: 20px;
+  }
+  
+  #header h1 {
+    margin: 0;
+  }
+
+  .btn-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 30px;
+  }
+  
+  .btn {
+    background-color: #6dbfb8;
+    border: none;
+    height:150px;
+    width:250px;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 32px;
+    margin: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+{% endblock %}
+
+{% block nav %}
+<header>
+    <nav>
+      <ul class="nav-links nav-links-left">
+        <li><a href="#">Organizations</a></li>
+      </ul>
+      <ul class="nav-links">
+        <li><a href="#">Results Manager</li>
+      </ul>
+      <ul class="nav-links nav-links-right">
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul>
+    </nav>
+  </header>
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center; margin-top: 15%; font-size: 24px;">
+    <h1>Results Manager</h1>
+  </div>
+  <div class="btn-container">
+    <button class="btn">Add New Competition Results</button>
+    <button class="btn">Manage Existing Competition</button>
+  </div>
+{% endblock %}
