@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}Results Manager{% endblock %}
+{% block title %}Add Results{% endblock %}
 
 {% block styles %}
 nav {
@@ -67,32 +67,56 @@ nav {
     margin-top:60px;
     padding: 20px;
   }
+
+  .form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
   
-  #header h1 {
-    margin: 0;
+  label, input {
+    margin-bottom: 10px;
+  }
+  
+  .input-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .input-left, .input-right {
+    flex-basis: 25%;
+  }
+  
+  .input-center {
+    flex-basis: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 
-  .btn-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 30px;
-  }
-  
   .btn {
     background-color: #6dbfb8;
     border: none;
-    height:150px;
-    width:350px;
+    height:50px;
+    width:100px;
     color: black;
     padding: 10px 20px;
     text-align: center;
-    vertical-align: middle;
+    display:inline-block;
     text-decoration: none;
-    display: inline-block;
-    font-size: 32px;
+    font-size: 16px;
     margin: 20px;
-    border-radius: 20px;
+    border-radius: 10px;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -118,11 +142,31 @@ nav {
 {% endblock %}
 
 {% block content %}
-<div style="text-align: center; margin-top: 15%; font-size: 24px;">
-    <h1>Results Manager</h1>
+<div style="text-align: center; margin-top: 5%; font-size: 24px;">
+    <h1>Add Competition</h1>
   </div>
-  <div class="btn-container">
-    <button class="btn">Add New Competition Results</button>
-    <button class="btn">Manage Existing Competition</button>
+  <div>
+    <form>
+      <div class="form">
+        <label for="input1">Competition Name</label>
+        <input type="text" id="input1" name="input1">
+        
+        <div class="input-group">
+          <div class="input-left">
+            <label for="input2">Start Time</label>
+            <input type="text" id="input2" name="input2">
+          </div>
+          
+          <div class="input-right"  style="margin-left: 20px;">
+            <label for="input4">End Time</label>
+            <input type="text" id="input4" name="input4">
+          </div>
+        </div>
+      </div>
+      <div class="buttons">
+        <button class="btn" type="submit">Submit</button>
+        <button class="btn" type="button">Cancel</button>
+      </div>
+    </form>
   </div>
 {% endblock %}
