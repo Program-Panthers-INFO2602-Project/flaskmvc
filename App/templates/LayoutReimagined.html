@@ -1,0 +1,146 @@
+<!doctype html>
+<html>
+  <head>
+  
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+     <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>{% block title %}Layout{% endblock %}</title>
+
+    <style>
+
+      {% block styles %}
+      
+      {% endblock %}
+
+      body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        margin: 0;
+      }
+      
+      #banner {
+        background-color: #e9fff7;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        padding: 1%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
+      
+      #banner img {
+        display: block;
+        margin: 0 auto;
+        max-height: 60px;
+        max-width: 100%;
+        height: auto;
+        position: center;
+        top: 1px;
+      }
+
+      #left-column, #right-column {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        background-image: url('https://imgur.com/sFOwRQ8.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: -1;
+        flex: 1;
+      }
+      
+      #left-column {
+        left: 25%;
+      }
+      
+      #right-column {
+        right: -72%;
+      }
+      
+      main {
+        flex-grow: 1;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        position: center;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-wrap: wrap;
+        padding-top: 70px;
+        padding-bottom: 70px;
+        background-color: #243246;
+      }
+      
+      footer {
+        background-color: #e9fff7;
+        color: #333;
+        padding: 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 100%;
+        z-index: 2;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+      }
+      
+      .footer-section {
+        text-align: center;
+        margin-right: 20px;
+      }
+      
+      .main_content {
+        margin: 0 10px;
+        width: 100%;
+        height:560px;
+        background: rgba(233, 255, 247, .35);
+        z-index: 1;
+        border: 2px solid #282828;
+        box-sizing: border-box;
+        border-radius: 20px;
+        flex-basis: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      html {
+        overflow: hidden;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="banner">
+      <div id="left-column"></div>
+      <img src="https://imgur.com/j9nS1Ug.png" alt="My Website Logo">
+      <div id="right-column"></div>
+    </div>
+      {% block nav %}{% endblock %}
+    <main>
+      <div class="main_content">
+        {% block content %}{% endblock %}
+      </div>
+    </main>
+
+    <footer>
+      <div class="footer-section">
+        INFO 2602 Project
+      </div>
+      <div class="footer-section">
+        Citius, Altius, Fortius
+      </div>
+      <div class="footer-section">
+        Program Panthers 2023
+      </div>
+    </footer>
+  </body>
+</html>
