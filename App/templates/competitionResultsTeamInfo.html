@@ -1,0 +1,226 @@
+{% extends "layout.html" %}
+{% block title %}Competition Results{% endblock %}
+
+{% block styles %}
+nav {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  nav li {
+    margin: 0 10px;
+  }
+  
+  nav a {
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  .nav-links-left {
+    margin-right: auto;
+  }
+  
+  .nav-links-right {
+    margin-left: auto;
+  }
+  
+  .nav-links li {
+    margin: 0 10px;
+  }
+  
+  .nav-links a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  header {
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+
+  #header {
+    text-align: center;
+    margin-top:60px;
+    padding: 20px;
+  }
+  
+  #header h1 {
+    margin: 0;
+  }
+  
+  .competition_info{
+    border: 2px solid #282828;
+    box-sizing: border-box;
+    background-color: transparent;
+    border-radius: 20px;
+    width: 80%;
+    height: 22%;
+    position: absolute; 
+    top: 25%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  .leaderboard_header{
+    text-align: center;
+    margin-top: 15%;
+  }
+  
+  .leaderboard{
+    border: 2px solid #282828;
+    box-sizing: border-box;
+    background-color: transparent;
+    border-radius: 20px;
+    width: 80%;
+    height: 50%;
+    position: absolute; 
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  table{
+    margin-top: 10px;
+    text-align: center;
+    table-layout: auto;
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 15px;
+  }
+
+  table tr{
+    height: 100%;
+  }
+
+  .search_team{
+    border-radius:5px;
+    width: 100px;
+    text-align: center;
+  }
+
+  .team_info{
+    border: 2px solid #282828;
+    box-sizing: border-box;
+    background-color: #84C5BB;
+    border-radius: 20px;
+    width: 45%;
+    height: 65%;
+    position: absolute; 
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.9;
+    z-index: 2;
+  }
+
+  .desc{
+    text-align:center;
+  }
+{% endblock %}
+
+{% block nav %}
+<header>
+    <nav>
+      <ul class="nav-links nav-links-left">
+        <li><a href="#">Organizations</a></li>
+      </ul>
+      <ul class="nav-links nav-links-right">
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul>
+    </nav>
+</header>
+{% endblock %}
+
+{% block content %}
+<div style="text-align: center;">
+    <h1>COMPETITION 1</h1>
+  </div>
+
+  <div class="competition_info">
+    <div style="margin-left:20px;">
+      <p>Organization Name:</p>
+      <p>Start Time: </p>
+      <p>End Time:</p>
+    </div>
+  </div>
+
+  <div class="leaderboard_header">
+    <h1>LEADERBOARD</h1>
+  </div>
+
+  <div class="leaderboard">
+    <table>
+      <thead>
+        <tr>
+          <th>Team</th>
+          <th>Points</th>
+          <th>Time Taken</th>
+          <th>Rank</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><input class="search_team" type="text" placeholder="Search Team"></td>
+        </tr>
+        <tr>
+          <td>Code Warriors</td>
+          <td>12</td>
+          <td>01:27</td>
+          <td>1</td>
+        </tr>
+        <tr>
+          <td>Code Vikings</td>
+          <td>10</td>
+          <td>01:00</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>Code Warriors</td>
+          <td>9</td>
+          <td>01:38</td>
+          <td>3</td>
+        </tr>
+        
+      </tbody>
+    </table>
+  </div>
+
+  <div class="team_info">
+    <div class="desc">
+      <h1 style="font-size: 20px;">Team Name</h1>
+      <h1 style="font-size: 24px;">Code Warriors</h1>
+      <br></br>
+      <h1 style="font-size: 16px;">Participants</h1>
+      <p>member1</p>
+      <p>member2</p>
+      <p>member3</p>
+      <p>member4</p>
+    </div>
+    
+  </div>
+{% endblock %}
