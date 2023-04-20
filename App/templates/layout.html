@@ -8,7 +8,7 @@
     <!-- Compiled and minified CSS -->
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>{% block title %}{% endblock %}</title>
+    <title>{% block title %}Layout{% endblock %}</title>
 
     <style>
 
@@ -24,76 +24,92 @@
       }
       
       #banner {
-        background-color: lightgray;
-        text-align: center;
-        padding: 10px;
-        height: 70px;
-      }
+        background-color: #e9fff7;
+        width: 100%;
+        position: fixed;
+        z-index: 1;
+        padding: 1%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        }
       
       #banner img {
         display: block;
-        margin: auto;
+        margin: 0 auto;
         max-height: 60px;
         max-width: 100%;
         height: auto;
-        top: 5px;
+        position: center;
+        top: 1px;
+      }
+
+      #left-column, #right-column {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 100%;
+        background-image: url('https://imgur.com/sFOwRQ8.jpg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        z-index: -1;
+        flex: 1;
+      }
+      
+      #left-column {
+        left: 25%;
+      }
+      
+      #right-column {
+        right: -72%;
       }
       
       main {
-        display: flex;
         flex-grow: 1;
+        margin-top: 5px;
+        margin-bottom: 5px;
+        position: center;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-wrap: wrap;
+        padding-top: 70px;
+        padding-bottom: 70px;
+        background-color: #243246;
       }
       
       footer {
-        background-color: #f1f1f1;
+        background-color: #e9fff7;
         color: #333;
         padding: 10px;
         display: flex;
         justify-content: space-between;
         align-items: center;
         width: 100%;
-      }
-      
-     .main_content {
-        position: absolute;
-        width: 930px;
-        height: 570px;
-        top: 15%;
-        left: 20%;
-        background-color: green;
-        z-index: -1;
-        border: 2px solid #282828;
-        box-sizing: border-box;
-        background-color: transparent;
-        border-radius: 20px;
-      }
-      
-      .footer-section {
-        flex: 1;
-        text-align: center;
-      }
-  
-      #left-column, #right-column {
-        margin-top: 27px;
-        min-height: 100%;
-        height: auto;
-        width: 20%;
-        background-image: url('https://imgur.com/sFOwRQ8.jpg');
-        background-size: contain;
-        background-position: center;
-        background-repeat: no-repeat;
-        position: absolute;
-        z-index: -1;
-      }
-      
-      #left-column {
-        top: 0;
+        z-index: 2;
+        position: fixed;
+        bottom: 0;
         left: 0;
       }
       
-      #right-column {
-        top: 0;
-        right: 0;
+      .footer-section {
+        text-align: center;
+        margin-right: 20px;
+      }
+      
+      .main_content {
+        margin: 0 10px;
+        width: 100%;
+        height:560px;
+        background: rgba(233, 255, 247, .35);
+        z-index: 1;
+        border: 2px solid #282828;
+        box-sizing: border-box;
+        border-radius: 20px;
+        flex-basis: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
 
       html {
@@ -104,18 +120,14 @@
   </head>
   <body>
     <div id="banner">
+      <div id="left-column"></div>
       <img src="https://imgur.com/j9nS1Ug.png" alt="My Website Logo">
+      <div id="right-column"></div>
     </div>
       {% block nav %}{% endblock %}
     <main>
-      <div id="left-column"></div>
       <div class="main_content">
         {% block content %}{% endblock %}
-      </div>
-      <div id="right-column"></div>
-      
-      <div style="width: 60%; margin: 0 auto;">
-        <div></dv>
       </div>
     </main>
 
