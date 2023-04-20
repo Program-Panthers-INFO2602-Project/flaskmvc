@@ -52,7 +52,8 @@ button[type="submit"]:hover {
 }
 
 .login-form{
-    margin-top: 40px;
+    margin-top: 4px;
+    margin-bottom: 20px;
 }
 
 .login-form label {
@@ -74,10 +75,13 @@ button[type="submit"]:hover {
 
 .login-form .input-container input {
     border: 1px solid lightgray;
-    border-radius: 4px;
+    border-radius: 50px;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
+    text-align: center;
+    font-family: 'Metamorphous', cursive;
+    font-weight: bold;
 }
 
 .login-form button[type="submit"] {
@@ -89,16 +93,24 @@ button[type="submit"]:hover {
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
+    font-family: 'Metamorphous', cursive;
+    margin-top: 15px;
 }
 
 .login-form button[type="submit"]:hover {
     background-color: #3e8e41;
+    opacity: 80%;
+    transition: 0.5s;
+    border-color: #282828;
+    padding-left: 23px;
+    padding-right: 23px;
+    font-size: 18px;
 }
 
 #loginImg{
-    height: auto%;
+    height: auto;
     width: 70%;
     display: block;
     margin: 0 auto;
@@ -108,24 +120,53 @@ button[type="submit"]:hover {
     height: 110px;
 }
 
+#left-column{
+    left: 15%;
+}
+
+#right-column{
+    right: -78%
+}
+
 #banner img{
     max-height: 100%;
 }
+
+p, span, a{
+    font-family: 'Metamorphous', cursive;
+    font-size:small;
+    display: contents;
+}
+
+a{
+    font-size: small;
+    color: #6dbfb8;
+}
+
+a:hover{
+    color: lightgray;
+    font-size: medium;
+    transition: 0.5s;
+}
+
 {% endblock %}
 
 {% block content %}
 <form class="login-form">
-    <div class="input-container">
-      <img src="https://imgur.com/48Tx8Ea.png" alt="Username Image" id="loginImg">
-      <input type="text" id="username" name="username">
-    </div>
-    
-    <div class="input-container">
-      <img src="https://imgur.com/DKqBnpj.png" alt="Password Image" id="loginImg">
-      <input type="password" id="password" name="password">
-    </div>
-    
-    <p>Don't have an account yet? Sign up and let the games commence!</p>
-    <button type="submit">Log In!</button>
+  <div class="input-container">
+    <img src="https://imgur.com/48Tx8Ea.png" alt="Username Image" id="loginImg">
+    <input type="text" id="username" name="username">
+  </div>
+  
+  <div class="input-container">
+    <img src="https://imgur.com/DKqBnpj.png" alt="Password Image" id="loginImg">
+    <input type="password" id="password" name="password">
+  </div>
+
+  <p>Don't have an account yet?</p>
+  <a href="url">Sign up</a>
+  <span>and let the games commence!</span>
+
+  <button type="submit">Log In!</button>
 </form>
 {% endblock %}
