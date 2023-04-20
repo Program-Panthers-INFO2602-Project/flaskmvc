@@ -3,160 +3,165 @@
 
 {% block styles %}
 nav {
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
-    position: relative;
-    z-index: 3;
-    display: flex;
-    justify-content: space-between;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
 }
 
 nav ul {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: space-between;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
 }
 
 nav li {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 nav a {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
 .nav-links {
-    display: flex;
-    align-items: center;
-    list-style: none;
-    margin: 0;
-    padding: 0;
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
 }
 
 .nav-links-left {
-    margin-right: auto;
+  margin-right: auto;
 }
 
 .nav-links-right {
-    margin-left: auto;
+  margin-left: auto;
 }
 
 .nav-links li {
-    margin: 0 10px;
+  margin: 0 10px;
 }
 
 .nav-links a {
-    color: #fff;
-    text-decoration: none;
+  color: #fff;
+  text-decoration: none;
 }
 
 header {
-  margin-top:85px;
-    background-color: #333;
-    color: #fff;
-    padding: 10px;
-    text-align: center;
+margin-top:85px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
 }
 
 .account-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+display: flex;
+flex-direction: column;
+align-items: center;
 }
 
 form {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  border-radius: 5px;
-  margin-top:1em;
-  padding: 20px;
-  width: 400px;
+display: flex;
+flex-direction: column;
+align-items: center;
+border-radius: 5px;
+margin-top:1em;
+padding: 20px;
+width: 400px;
 }
 
 .label-container {
-  display: flex;
-  flex-direction: column; 
-  width: 60%; 
+display: flex;
+flex-direction: column; 
+width: 60%; 
 }
 
 label {
-  margin-bottom: 3px;
+margin-bottom: 3px;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: row; 
-  justify-content: space-between; 
-  align-items: center; 
-  margin-bottom: 20px;
-  width: 100%;
+display: flex;
+flex-direction: row; 
+justify-content: space-between; 
+align-items: center; 
+margin-bottom: 20px;
+width: 100%;
 }
 
 input[type="text"],
 input[type="email"],
 input[type="password"] {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  box-sizing: border-box;
-  margin-bottom: 20px;
+width: 100%;
+padding: 10px;
+border: 1px solid lightgray;
+border-radius: 5px;
+box-sizing: border-box;
+margin-bottom: 20px;
 }
 
 .placeholders{
-  display: inline-block;
-  width: 100%;
-  padding: 10px;
-  border: 1px solid lightgray;
-  border-radius: 5px;
-  box-sizing: border-box;
-  margin-bottom: 1px;
+display: inline-block;
+width: 100%;
+padding: 10px;
+border: 1px solid lightgray;
+border-radius: 5px;
+box-sizing: border-box;
+margin-bottom: 1px;
 }
 
 button {
-  background-color: #6dbfb8;
-  color: black;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-top: 20px;
+background-color: #6dbfb8;
+color: black;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+margin-top: 20px;
 }
 
 .form-row {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  grid-gap: 10px;
-  
+display: grid;
+grid-template-columns: auto 1fr;
+grid-gap: 10px;
+
 }
-  
+
 .form-row label {
-  margin-right: 10px;
-  grid-row: 1;
+margin-right: 10px;
+grid-row: 1;
 }
-  
+
 .form-row input {
-  flex: 1; 
-  grid-row: 2;
+flex: 1; 
+grid-row: 2;
 }
 
 .desc{
-  margin-left:10em;
+margin-left:10em;
 }
 
 br {
-  line-height: 1em;
+line-height: 1em;
 }
 
 .pword{
-  margin-top:10px;
-  margin-bottom:30px;
+margin-top:10px;
+margin-bottom:30px;
+}
+
+.main_content {
+margin-top:-2em;
+height:510px;
 }
 {% endblock %}
 
