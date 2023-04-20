@@ -1,13 +1,13 @@
-#from App.models import Leaderboard
 from App.models import Team
 from App.database import db
+from datetime import time
 
 class Competition(db.Model):
     id = db.Column(db.Integer, primary_key = True)
     name = db.Column(db.String(80), nullable = False, unique = True)
     organization_id = db.Column(db.Integer,  db.ForeignKey('organization.id'), nullable = False, unique = False)
-    start_time = db.Column(db.Time, unique = False, nullable = False)
-    end_time = db.Column(db.Time, unique = False, nullable = False)
+    start_time = db.Column(db.String, unique = False, nullable = False)
+    end_time = db.Column(db.String, unique = False, nullable = False)
     teams = db.relationship('Team', backref = 'competition', lazy = True)
     leaderboard_entries = db.relationship('Team', secondary = 'leaderboard', backref = 'leaderboard_entry', lazy = True)
 
@@ -28,5 +28,5 @@ class Competition(db.Model):
         }
 
 
-    def repr():
+    def repr(self):
         return f'<Competition {self.id}: {self.name} - Start Time: {self.start_time} End Time: {self.end_time}> '

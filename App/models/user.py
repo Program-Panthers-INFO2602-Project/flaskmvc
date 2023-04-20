@@ -23,24 +23,6 @@ class User(db.Model, UserMixin):
         self.username = username
         self.set_password(password)
 
-    def search_team(self, team_name):
-        team = Team.query.filter_by(team_name = team_name)
-        if not team: 
-            return None
-        return team
-
-    def search_competition(self, competition_name):
-        competition = Competition.query.filter_by(name = competition_name)
-        if not competition:
-            return None
-        return competition
-
-    def search_user(self, username):
-        user = User.query.filter_by(username = username).first()
-        if not user:
-            return None
-        return user
-
     def get_json(self):
         return{
             'id': self.id,
@@ -58,5 +40,5 @@ class User(db.Model, UserMixin):
         """Check hashed password."""
         return check_password_hash(self.password, password)
 
-    def repr():
+    def repr(self):
         return f'<User {self.id} : {self.first_name} {self.last_name} {self.username} - {self.email}>'

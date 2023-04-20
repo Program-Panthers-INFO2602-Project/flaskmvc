@@ -40,7 +40,10 @@ def create_coordinator(first_name, last_name, email, username, password, organiz
         db.session.rollback()
         print("rollback")
         return None
-    
+
+
+def get_all_users():
+    return User.query.all()
 
 
 def get_all_users_json():
@@ -58,4 +61,11 @@ def update_user(id, username):
         db.session.add(user)
         return db.session.commit()
     return None
+
+
+def get_user(username):
+    return User.query.filter_by(username = username).first()
+
+def get_coordinator(username):
+    return Coordinator.query.filter_by(username = username).first()
     
