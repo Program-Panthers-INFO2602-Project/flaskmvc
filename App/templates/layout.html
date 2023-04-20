@@ -1,12 +1,29 @@
 <!doctype html>
 <html>
   <head>
+    <link rel="stylesheet" href="fonts.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Metamorphous&display=swap" rel="stylesheet">
   
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+     <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Compiled and minified CSS -->
     <!--Let browser know website is optimized for mobile-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>{% block title %}Layout{% endblock %}</title>
 
     <style>
+
+      {% block styles %}
+      
+      {% endblock %}
+
+      body, main, header, footer{
+        font-family: 'Metamorphous', cursive;
+        font-size: small;
+      }
 
       body {
         display: flex;
@@ -63,7 +80,7 @@
         position: center;
         display: flex;
         justify-content: center;
-        align-items: stretch;
+        align-items: center;
         flex-wrap: wrap;
         padding-top: 70px;
         padding-bottom: 70px;
@@ -91,8 +108,9 @@
       
       .main_content {
         margin: 0 10px;
+        margin-top: 3%;
         width: 100%;
-        height:560px;
+        height:min-content;
         background: rgba(233, 255, 247, .35);
         z-index: 1;
         border: 2px solid #282828;
@@ -100,15 +118,12 @@
         border-radius: 20px;
         flex-basis: 95%;
         display: flex;
+        justify-content:center;
       }
 
       html {
         overflow: hidden;
       }
-
-      {% block styles %}
-      
-      {% endblock %}
     </style>
 
   </head>
