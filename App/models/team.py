@@ -17,6 +17,7 @@ class Team(db.Model):
         self.points = points
         self.time_taken = time_taken
 
+
     def calculate_rank(self, competition_id, points, time_taken):
         competition = Competition.query.filter_by(id = competition_id)
         
@@ -30,6 +31,7 @@ class Team(db.Model):
             'points': self.points,
             'time_taken': self.time_taken
         }
+
 
     def repr(self):
         return f'<Team {self.id} : {self.team_name} - Points: {self.points}  Time Taken: {self.time_taken}>'

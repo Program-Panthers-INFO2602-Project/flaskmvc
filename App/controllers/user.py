@@ -21,7 +21,7 @@ def create_coordinator(first_name, last_name, email, username, password, organiz
     coordinator = Coordinator.query.filter_by(username = username).first()
     if coordinator: 
         return None
-
+        
     organization_id = Organization.query.filter_by(name = organization_name).first()
     if not organization_id:
         organization = Organization(name = organization_name)
@@ -31,16 +31,17 @@ def create_coordinator(first_name, last_name, email, username, password, organiz
         organization_id = organization.id
         
     newcoordinator = Coordinator(first_name = first_name, last_name = last_name, email = email, username=username, password=password, organization_id = organization_id)
-
+    
     try:
         db.session.add(newcoordinator)
         db.session.commit()
+        print("committed")
         return newcoordinator
     except Exception: 
         db.session.rollback()
         print("rollback")
         return None
-
+    
 
 def get_all_users():
     return User.query.all()

@@ -4,7 +4,7 @@ from App.database import db
 
 class Coordinator(User):
     __tablename__ = 'coordinator'
-    coordinator_id = db.Column(db.Integer, primary_key=True)
+    coordinator_id = db.Column(db.Integer,  primary_key=True)
     organization_id = db.Column(db.Integer, db.ForeignKey('organization.id'), nullable = False, unique = False)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
 
@@ -13,6 +13,7 @@ class Coordinator(User):
     def __init__(self, organization_id, first_name, last_name, email, username, password):
         super().__init__(first_name, last_name, email, username, password)
         self.organization_id = organization_id
+
 
 
     def add_competition(self, competition_name, start_time, end_time):
@@ -95,13 +96,35 @@ class Coordinator(User):
 
 
 
-    #def add_team_member(self, competition_id, team_id, user_id):
-       
+    def add_team_member(self, team_id, username):
+        team = Team.query.get(team_id)
+        print(team)
+        if not team:
+            return None
+        
+        user = User.query.filter_by(username = username).first()
+        print(user)
+        if not user:
+            return None
+        
+        team.members.append(user)
+        db.session.commit()
+        return True
 
 
 
-    #def remove_team_member(self, competition_id, team_id, user_id):
-
+    def remove_team_member(self, team_id, username):
+        team = Team.query.get(team_id)
+        if not team:
+            return None
+        
+        user = User.query.filter_by(username = username).first()
+        if not user:
+            return None
+        
+        team.members.remove(user)
+        db.session.commit()
+        return True
 
 
     def get_json(self):

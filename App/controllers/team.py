@@ -38,3 +38,17 @@ def get_all_competition_teams_json(competition_name):
         return []
     teams = [team.get_json() for team in teams]
     return teams
+
+
+def get_all_team_members(team_id):
+    team = Team.query.get(team_id)
+    return team.members
+
+
+def get_all_team_members_json(team_id):
+    team = Team.query.get(team_id)
+    if not team:
+        return []
+
+    members = [member.get_json() for member in team.members]
+    return members

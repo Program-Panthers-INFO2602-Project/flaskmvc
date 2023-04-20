@@ -1,0 +1,8 @@
+id,organization,organization_id,first_name,last_name,email,username,password
+1,Apple,6,Michael,Johnson,michaeljohnson@example.com,michaelj789,M!chaelJ0hnson
+2,Google,2,Emily,Brown,emilybrown@example.com,emilyb678,EmilyBr0wn#678
+3,Microsoft,1,William,Anderson,williamanderson@example.com,william_a,Anderson@2023
+4,HackerRank,7,Sophia,Lee,sophiale@example.com,sophial123,S0phiaL#123
+5,Amazon,3,Alexander,Chen,alexanderchen@example.com,alex_c456,AChen@789
+6,Facebook,4,Olivia,Taylor,oliviataylor@example.com,oliviataylor89,OliviaTaylor$89
+7,Netflix,5,Ava,Walker,avawalker@example.com,avawalker22,AvaW@lk3r
