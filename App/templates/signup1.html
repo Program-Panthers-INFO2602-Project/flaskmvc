@@ -6,7 +6,8 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 100px;
+    padding: 10px;
+    flex-direction: column;
 }
 
 .btn {
@@ -32,8 +33,14 @@
 
 .btn:hover{
     font-size: 30px;
+    width: 270px;
     background-color: #5eaaa4;
-    transition: 0.6s;
+    transition: 0.5s;
+}
+
+.btn:active{
+    background-color: #92c3c0;
+    transition:0.2s;
 }
 
 #banner{
@@ -43,11 +50,17 @@
 #banner img{
     max-height: 100%;
 }
+
+h1{
+    margin-bottom: 20px;
+}
+
 {% endblock %}
 
 {% block content %}
 <form class="signupForm">
     <div class="btn-container">
+        <h1>Who are you?</h1>
         <button class="btn">Competitor</button>
         <button class="btn">Coordinator</button>
     </div>
