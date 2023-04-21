@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}SignUp{% endblock %}
+{% block title %}Sign Up{% endblock %}
 
 {% block styles %}
 .btn-container {
@@ -61,8 +61,15 @@ h1{
 <form class="signupForm">
     <div class="btn-container">
         <h1>Who are you?</h1>
-        <button class="btn">Competitor</button>
-        <button class="btn">Coordinator</button>
+
+        <a href="/signup/competitor">
+            <input class="btn" type = 'button' value = 'Competitor'/>
+        </a>
+
+        <a href="/signup/coordinator">
+            <input class="btn" type = 'button' value = 'Coordinator'/>
+        </a>
+         
     </div>
 </form>
 {% endblock %}

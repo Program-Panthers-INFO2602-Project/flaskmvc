@@ -15,9 +15,8 @@ migrate = get_migrate(app)
 def initialize():
     db.drop_all()
     db.create_all()
-    create_user('Bob', 'Smith', 'bob@mail.com', 'bobby123', 'bobpass')
-    create_coordinator('Jane', 'Doe', 'janedoe@mail.com', 'jane123', 'janepass', 'UWI')
-
+    create_user('Bob', 'Smith', 'bob@mail.com', 'bob', 'bobpass')
+   
     with open('organizations.csv') as file:
         reader = csv.DictReader(file)
         for row in reader:

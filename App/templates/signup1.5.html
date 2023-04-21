@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}SignUp{% endblock %}
+{% block title %}Sign Up{% endblock %}
 
 {% block styles %}
 form {
@@ -115,7 +115,7 @@ form {
 {% endblock %}
 
 {% block content %}
-<form class="signupForm">
+<form class="signupForm" method="POST" action="/login">
     <div class="input-container">
       <img src="https://imgur.com/nC7rLUG.png" alt="Organization Image" id="orgImg">
       <input type="password" id="password" name="password">

@@ -35,7 +35,7 @@ user_views = Blueprint('user_views', __name__, template_folder='../templates')
 #shows home page with all organizations
 @user_views.route('/home', methods = ['GET'])
 def homepage_view():
-    render_template('organizations.html')
+    return render_template('organizations.html')
 
 
 @user_views.route('/account', methods = ['GET'])
