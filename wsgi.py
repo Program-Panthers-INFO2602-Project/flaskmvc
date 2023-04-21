@@ -41,21 +41,6 @@ def initialize():
                 )
             db.session.add(new_coord)
     db.session.commit() 
-
-
-    with open('users.csv') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            new_user = User(
-                    first_name =row['first_name'], 
-                    last_name =row['last_name'], 
-                    email =row['email'], 
-                    username =row['username'], 
-                    password =row['password']
-                )
-            db.session.add(new_user)
-    db.session.commit() 
-    
   
     with open('competitions.csv') as file:
         reader = csv.DictReader(file)
@@ -68,10 +53,9 @@ def initialize():
                     start_time =row['start_time'], 
                     end_time =row['end_time']
                 )
+            organization.competitions.append(new_comp)
             db.session.add(new_comp)
-            
     db.session.commit() 
-
 
     with open('teams.csv') as file:
         reader = csv.DictReader(file)
@@ -84,9 +68,27 @@ def initialize():
                     points =row['points'], 
                     time_taken =row['time_taken']
                 )
+            competition.teams.append(new_team)
             db.session.add(new_team)
             
     db.session.commit() 
+
+    with open('users.csv') as file:
+        reader = csv.DictReader(file)
+        for row in reader:
+            new_user = User(
+                    first_name =row['first_name'], 
+                    last_name =row['last_name'], 
+                    email =row['email'], 
+                    username =row['username'], 
+                    password =row['password']
+                )
+            
+            team = Team.query.filter_by(team_name = row['team_name']).first()
+            if team:
+                team.members.append(new_user)
+            db.session.add(new_user)
+    db.session.commit()
     print('database intialized')
 
 '''

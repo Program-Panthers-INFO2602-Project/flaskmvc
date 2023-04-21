@@ -35,11 +35,9 @@ def create_coordinator(first_name, last_name, email, username, password, organiz
     try:
         db.session.add(newcoordinator)
         db.session.commit()
-        print("committed")
         return newcoordinator
     except Exception: 
         db.session.rollback()
-        print("rollback")
         return None
     
 
