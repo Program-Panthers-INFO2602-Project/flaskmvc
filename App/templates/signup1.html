@@ -6,41 +6,61 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    margin-top: 175px;
+    padding: 10px;
+    flex-direction: column;
 }
 
 .btn {
-background-color: #6dbfb8;
-border: none;
-height:150px;
-width:250px;
-color: black;
-padding: 10px 20px;
-text-align: center;
-vertical-align: middle;
-text-decoration: none;
-display: inline-block;
-font-size: 32px;
-margin: 20px;
-border-radius: 20px;
-cursor: pointer;
-display: flex;
-align-items: center;
-justify-content: center;
+    background-color: #6dbfb8;
+    border: solid 2px #282828;
+    height:150px;
+    width:250px;
+    color: black;
+    padding: 10px 20px;
+    text-align: center;
+    vertical-align: middle;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 28px;
+    margin: 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Metamorphous', cursive;
+}
+
+.btn:hover{
+    font-size: 30px;
+    width: 270px;
+    background-color: #5eaaa4;
+    transition: 0.5s;
+}
+
+.btn:active{
+    background-color: #92c3c0;
+    transition:0.2s;
 }
 
 #banner{
-height: 110px;
+    height: 110px;
 }
 
 #banner img{
-max-height: 100%;
+    max-height: 100%;
 }
+
+h1{
+    margin-bottom: 20px;
+}
+
 {% endblock %}
 
 {% block content %}
 <form class="signupForm">
     <div class="btn-container">
+        <h1>Who are you?</h1>
         <button class="btn">Competitor</button>
         <button class="btn">Coordinator</button>
     </div>

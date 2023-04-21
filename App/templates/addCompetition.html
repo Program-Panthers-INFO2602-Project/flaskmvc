@@ -1,0 +1,182 @@
+{% extends "layout.html" %}
+{% block title %}Add Results{% endblock %}
+
+{% block styles %}
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links-left {
+  margin-right: auto;
+}
+
+.nav-links-right {
+  margin-left: auto;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header {
+margin-top:85px;
+background-color: #333;
+color: #fff;
+padding: 10px;
+text-align: center;
+}
+
+.form {
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+margin-top:10em;
+margin-left: 30em;
+}
+
+label, input {
+margin-bottom: 10px;
+}
+
+.input-group {
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+}
+
+.input-left, .input-right {
+flex-basis: 25%;
+}
+
+.input-center {
+flex-basis: 50%;
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+.buttons{
+display: flex;
+flex-direction: row;
+justify-content: center;
+align-items: center;
+margin-left:30em; 
+}
+
+.btn {
+background-color: #6dbfb8;
+border: none;
+height:50px;
+width:100px;
+color: black;
+padding: 10px 20px;
+text-align: center;
+display:inline-block;
+text-decoration: none;
+font-size: 16px;
+margin: 20px;
+border-radius: 10px;
+cursor: pointer;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.heading{
+position: absolute;
+text-align: center;
+margin-left:35%;
+font-size: 24px;
+}
+
+.main_content {
+margin-top:-2em;
+height:510px;
+}
+{% endblock %}
+
+{% block nav %}
+<header>
+    <nav>
+      <ul class="nav-links nav-links-left">
+        <li><a href="#">Organizations</a></li>
+      </ul>
+      <ul class="nav-links">
+        <li><a href="#">Results Manager</li>
+      </ul>
+      <ul class="nav-links nav-links-right">
+        <li><a href="#">Account</a></li>
+        <li><a href="#">Log Out</a></li>
+      </ul>
+    </nav>
+  </header>
+{% endblock %}
+
+{% block content %}
+<div class="heading">
+  <h1>Add Competition</h1>
+</div>
+<div>
+  <form>
+    <div class="form">
+      <label for="input1">Competition Name</label>
+      <input type="text" id="input1" name="input1">
+      
+      <div class="input-group">
+        <div class="input-left">
+          <label for="input2">Start Time</label>
+          <input type="text" id="input2" name="input2">
+        </div>
+        
+        <div class="input-right"  style="margin-left: 20px;">
+          <label for="input4">End Time</label>
+          <input type="text" id="input4" name="input4">
+        </div>
+      </div>
+    </div>
+    <div class="buttons">
+      <button class="btn" type="submit">Submit</button>
+      <button class="btn" type="button">Cancel</button>
+    </div>
+  </form>
+</div>
+{% endblock %}

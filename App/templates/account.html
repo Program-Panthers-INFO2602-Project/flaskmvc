@@ -1,0 +1,219 @@
+{% extends "layout.html" %}
+{% block title %}Account{% endblock %}
+
+{% block styles %}
+nav {
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+  position: relative;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+nav li {
+  margin: 0 10px;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links-left {
+  margin-right: auto;
+}
+
+.nav-links-right {
+  margin-left: auto;
+}
+
+.nav-links li {
+  margin: 0 10px;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+}
+
+header {
+margin-top:85px;
+  background-color: #333;
+  color: #fff;
+  padding: 10px;
+  text-align: center;
+}
+
+.account-container {
+display: flex;
+flex-direction: column;
+align-items: center;
+}
+
+form {
+display: flex;
+flex-direction: column;
+align-items: center;
+border-radius: 5px;
+margin-top:1em;
+padding: 20px;
+width: 400px;
+}
+
+.label-container {
+display: flex;
+flex-direction: column; 
+width: 60%; 
+}
+
+label {
+margin-bottom: 3px;
+}
+
+.form-group {
+display: flex;
+flex-direction: row; 
+justify-content: space-between; 
+align-items: center; 
+margin-bottom: 20px;
+width: 100%;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+width: 100%;
+padding: 10px;
+border: 1px solid lightgray;
+border-radius: 5px;
+box-sizing: border-box;
+margin-bottom: 20px;
+}
+
+.placeholders{
+display: inline-block;
+width: 100%;
+padding: 10px;
+border: 1px solid lightgray;
+border-radius: 5px;
+box-sizing: border-box;
+margin-bottom: 1px;
+}
+
+button {
+background-color: #6dbfb8;
+color: black;
+padding: 10px 20px;
+border: none;
+border-radius: 5px;
+cursor: pointer;
+margin-top: 20px;
+}
+
+.form-row {
+display: grid;
+grid-template-columns: auto 1fr;
+grid-gap: 10px;
+
+}
+
+.form-row label {
+margin-right: 10px;
+grid-row: 1;
+}
+
+.form-row input {
+flex: 1; 
+grid-row: 2;
+}
+
+.desc{
+margin-left:10em;
+}
+
+br {
+line-height: 1em;
+}
+
+.pword{
+margin-top:10px;
+margin-bottom:30px;
+}
+
+.main_content {
+margin-top:-2em;
+height:510px;
+}
+{% endblock %}
+
+
+{% block nav %}
+<header>
+  <nav>
+    <ul class="nav-links nav-links-left">
+      <li><a href="#">Organizations</a></li>
+    </ul>
+    <ul class="nav-links nav-links-right">
+      <li><a href="#">Account</a></li>
+      <li><a href="#">Log Out</a></li>
+    </ul>
+  </nav>
+</header>
+{% endblock %}
+
+{% block content %}
+<div class="account-container">
+    <h1>View Account</h1>
+    <form>
+      <div class="form-group">
+      <div class="form-row label-container">
+          <label for="fname">First Name</label> 
+          <br></br>
+          <p class="placeholders">firstname</p>
+      </div>
+      <div class="form-row label-container">
+          <label for="lname">Last Name</label>
+          <br></br>
+          <p class="placeholders">lastname</p>
+      </div>
+      <div class="form-row label-container">
+          <label for="username">Username</label>
+          <br></br>
+          <p class="placeholders">username</p>
+      </div>
+      </div>
+      <div class="form-group">
+      <div class="form-row label-container">
+          <label for="email">Email Address</label>
+          <br></br>
+          <p class="placeholders">emailaddress</p>
+      </div>
+      <div class="form-row label-container">
+          <label class="pword" for="password">Password</label>
+          <br></br>
+          <input type="password" placeholder="Password" name="password" id="password" required>
+      </div>
+      </div>
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+{% endblock %}
