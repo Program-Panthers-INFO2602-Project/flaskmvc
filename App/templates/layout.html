@@ -16,8 +16,6 @@
 
     <style>
 
-      
-
       body, main, header, footer{
         font-family: 'Metamorphous', cursive;
         font-size: small;
@@ -65,11 +63,17 @@
       }
       
       #left-column {
-        left: 25%;
+        position: absolute;
+        left: 0;
+        margin-right: 10px;
+        transform: translateX(22.5%);
       }
       
       #right-column {
-        right: -72%;
+        position: absolute;
+        left: 0;
+        margin-left: 10px;
+        transform: translateX(70%);
       }
       
       main {
@@ -107,7 +111,7 @@
       
       .main_content {
         margin: 0 10px;
-        margin-top: 3%;
+        margin-top: 3.5%;
         width: 100%;
         height:min-content;
         background: rgba(233, 255, 247, .35);
@@ -123,6 +127,44 @@
       html {
         overflow: scroll;
       }
+
+      .flash-message {
+        position: fixed;
+        top: 0px;
+        width: 100%;
+        z-index: 100;
+      }
+      
+      .alert {
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+        align-items: center;
+        font-size: medium;
+        font-weight: bold;
+        padding: 12px;
+        max-width: auto;
+        background-color: #92c3c0;
+        border: 2px solid #243246;
+        color: black;
+        height: 5px;
+      }
+      
+      .alert .close {
+        background: transparent;
+        border: none;
+        outline: none;
+        padding: 0;
+        margin-left: 12px;
+        font-size: 24px;
+        font-weight: bold;
+        cursor: pointer;
+        color: black;
+      }
+      
+      {% block styles %}
+      {% endblock %}
+      
     </style>
 
   </head>
@@ -133,9 +175,24 @@
       <div id="right-column"></div>
     </div>
       {% block nav %}{% endblock %}
+
+      {% with messages = get_flashed_messages() %}
+        {% if messages %}
+          <div class="flash-message" id="flash-message">
+            <div class="alert">
+              {{ messages[0] }}
+              <button class="close" data-dismiss="alert" onclick="closeFlashMessage()">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        {% endif %}
+      {% endwith %}
+
     <main>
       <div class="main_content">
-        {% block content %}{% endblock %}
+        {% block content %}
+        {% endblock %}
       </div>
     </main>
 
@@ -152,3 +209,10 @@
     </footer>
   </body>
 </html>
+
+<script>
+  function closeFlashMessage() {
+    var flashMessage = document.getElementById("flash-message");
+    flashMessage.parentNode.removeChild(flashMessage);
+  }
+  </script>  

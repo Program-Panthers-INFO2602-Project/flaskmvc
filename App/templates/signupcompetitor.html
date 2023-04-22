@@ -1,6 +1,7 @@
 {% extends "layout.html" %}
 {% block title %}Sign Up{% endblock %}
 
+
 {% block styles %}
 .signup-container {
     display: flex;
@@ -92,7 +93,9 @@
 
 {% block content %}
 <div class="signup-container">
-    <form method="POST" action="/login">
+
+    <form method="POST" action="/login"></form>
+
         <div class="form-group">
         <div class="form-row label-container">
             <label for="fname"><img src="https://imgur.com/4Z3jg0D.png" alt="First Name"></label>
@@ -120,4 +123,5 @@
         <button type="submit">Sign Up!</button>
     </form>
 </div>
+
 {% endblock %}
