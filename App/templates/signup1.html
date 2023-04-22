@@ -2,7 +2,7 @@
 {% block title %}SignUp{% endblock %}
 
 {% block styles %}
-.btn-container {
+    .btn-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,6 +43,10 @@
     transition:0.2s;
 }
 
+#back-btn{
+    background-color: lightgray;
+}
+
 #banner{
     height: 110px;
 }
@@ -55,14 +59,32 @@ h1{
     margin-bottom: 20px;
 }
 
+p, span, a{
+    font-family: 'Metamorphous', cursive;
+    font-size:small;
+    display: contents;
+}
+
+a{
+    font-size: small;
+    color: #6dbfb8;
+}
+
+a:hover{
+    color: lightgray;
+    font-size: medium;
+    transition: 0.5s;
+}
 {% endblock %}
 
 {% block content %}
 <form class="signupForm">
-    <div class="btn-container">
-        <h1>Who are you?</h1>
-        <button class="btn">Competitor</button>
-        <button class="btn">Coordinator</button>
-    </div>
+  <div class="btn-container">
+      <h1>Who are you?</h1>
+      <button class="btn">Competitor</button>
+      <button class="btn">Coordinator</button>
+      <span>Have an account? Go</span>
+      <a href="javascript:history.back()">back to Login!</a>
+  </div>
 </form>
 {% endblock %}
