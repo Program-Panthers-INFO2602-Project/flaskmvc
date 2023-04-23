@@ -16,9 +16,6 @@
 
     <style>
 
-      {% block styles %}
-      {% endblock %}
-
       body, main, header, footer{
         font-family: 'Metamorphous', cursive;
         font-size: small;
@@ -81,7 +78,7 @@
       
       main {
         flex-grow: 1;
-        margin-top: 5px;
+        margin-top: 4.5%;
         margin-bottom: 5px;
         position: center;
         display: flex;
@@ -164,6 +161,9 @@
         cursor: pointer;
         color: black;
       }
+      
+      {% block styles %}
+      {% endblock %}
       
     </style>
 

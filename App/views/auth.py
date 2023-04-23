@@ -1,4 +1,4 @@
-from flask import Blueprint, render_template, jsonify, request, send_from_directory, flash, redirect, url_for
+from flask import Flask, Blueprint, render_template,url_for, redirect, request, flash, make_response, jsonify, send_from_directory
 from flask_jwt_extended import jwt_required, current_user as jwt_current_user
 from flask_login import login_required, login_user, current_user, logout_user
 
@@ -17,17 +17,27 @@ auth_views = Blueprint('auth_views', __name__, template_folder='../templates')
 
 @auth_views.route('/', methods = ['GET'])
 def login_page():
-    render_template('login.html')
+    return render_template('login.html')
 
 
 @auth_views.route('/signup', methods = ['GET'])
 def signup_view():
-    render_template('signup.html')
+    return render_template('signup1.html')
 
 
-@auth_views.route('/signup', methods = ['POST'])
-def signup_user_action():
-    data = request.form()
+@auth_views.route('/signup/competitor', methods = ['GET'])
+def signup_competitior_view():
+    return render_template('signup2.html')
+
+
+@auth_views.route('/signup/coordinator', methods = ['GET'])
+def signup_coordinator_view():
+    return render_template('signup1.5.html')
+
+
+@auth_views.route('/signup/competitor', methods = ['POST'])
+def signup_competitor_action():
+    data = request.form
 
     newuser = signup_user(data['first_name'], data['last_name'], data['email'],
                             data['username'], data['password']) 
@@ -42,7 +52,7 @@ def signup_user_action():
 
 @auth_views.route('/signup/coordinator', methods = ['POST'])
 def signup_coordinator_action():
-    data = request.form()
+    data = request.form
 
     newcoordinator = signup_coordinator(data['first_name'], data['last_name'], data['email'], data['username'],
                         data['password'], data['organization_name'])
@@ -58,19 +68,20 @@ def signup_coordinator_action():
 
 @auth_views.route('/login', methods=['POST'])
 def login_action():
-    data = request.form()
-  
-    user = login_user(data['username'], data['password'])
-    flash('Logged in successfully.')  
-    login_user(user)  
-    return redirect('/home') # redirect to hompage
+    data = request.form
+    user = login_competitor(data['username'], data['password'])
+    if user:
+        flash('Logged in successfully.')  
+        login_user(user)  
+        return redirect('/home') # redirect to hompage
 
     coordinator = login_coordinator(data['username'], data['password'])
-    flash('Logged in successfully.')
-    login_user(coordinator)
-    return redirect('/coordinator')
-    
-    flash('Invalid username or password')  # send message to next page
+    if coordinator:
+        flash('Logged in successfully.')
+        login_user(coordinator)
+        return redirect('/coordinator')
+
+    flash('Invalid username or password') # send message to next page
     return redirect('/')
 
 

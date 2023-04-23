@@ -1,5 +1,5 @@
 {% extends "layout.html" %}
-{% block title %}SignUp{% endblock %}
+{% block title %}Sign Up{% endblock %}
 
 {% block styles %}
     .btn-container {
@@ -81,8 +81,15 @@ a:hover{
 <form class="signupForm">
   <div class="btn-container">
       <h1>Who are you?</h1>
+      
+      <a href="/signup/competitor">
       <button class="btn">Competitor</button>
+      </a>
+      
+      <a href="/signup/coordinator">
       <button class="btn">Coordinator</button>
+      </a>
+      
       <span>Have an account? Go</span>
       <a href="javascript:history.back()">back to Login!</a>
   </div>
