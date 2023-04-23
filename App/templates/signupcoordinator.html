@@ -106,22 +106,22 @@
 
 {% block content %}
 <div class="signup-container">
-  <form>
+  <form method = 'POST' action = '/signup/coordinator'>
       <div class="form-group">
         <div class="form-row label-container">
             <label for="fname"><img src="https://imgur.com/4Z3jg0D.png" alt="First Name"></label>
-            <input type="text" placeholder="First Name" name="fname" id="fname" required>
+            <input type="text" placeholder="First Name" name="first_name" id="fname" required>
         </div>
         <div class="form-row label-container">
             <label for="lname"><img src="https://imgur.com/lOavs10.png" alt="Last Name"></label>
-            <input type="text" placeholder="Last Name" name="lname" id="lname" required>
+            <input type="text" placeholder="Last Name" name="last_name" id="lname" required>
         </div>
       </div>
 
       <div class="form-group">
         <div class="form-row label-container">
           <label for="organization"><img src="https://i.imgur.com/ThSjHTV.png" alt="Organization"></label>
-          <input type="text" placeholder="Organization" name="organization" id="organization" required>
+          <input type="text" placeholder="Organization" name="organization_name" id="organization" required>
         </div>
 
         <div class="form-row label-container">

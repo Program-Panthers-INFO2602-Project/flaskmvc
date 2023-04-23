@@ -146,6 +146,13 @@ flex: 1;
 grid-row: 2;
 }
 
+label img {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}
+
+
 .desc{
 margin-left:10em;
 }
@@ -170,50 +177,45 @@ height:510px;
 <header>
   <nav>
     <ul class="nav-links nav-links-left">
-      <li><a href="#">Organizations</a></li>
+      <li><a href="/home">Organizations</a></li>
     </ul>
     <ul class="nav-links nav-links-right">
-      <li><a href="#">Account</a></li>
-      <li><a href="#">Log Out</a></li>
+      <li><a href="/account">Account</a></li>
+      <li><a href="/logout">Log Out</a></li>
     </ul>
   </nav>
 </header>
 {% endblock %}
 
 {% block content %}
+{%if current_user.is_authenticated%}
 <div class="account-container">
     <h1>View Account</h1>
     <form>
       <div class="form-group">
       <div class="form-row label-container">
-          <label for="fname">First Name</label> 
+          <label for="fname"><img src="https://imgur.com/4Z3jg0D.png" alt="First Name"></label>
           <br></br>
-          <p class="placeholders">firstname</p>
+          <input type="text" name="first_name" id="fname" value ="{{current_user.first_name}}" readonly>
       </div>
       <div class="form-row label-container">
-          <label for="lname">Last Name</label>
-          <br></br>
-          <p class="placeholders">lastname</p>
+        <label for="lname"><img src="https://imgur.com/lOavs10.png" alt="Last Name"></label>
+        <input type="text" name="last_name" id="lname" value ="{{current_user.last_name}}" readonly>
       </div>
-      <div class="form-row label-container">
-          <label for="username">Username</label>
-          <br></br>
-          <p class="placeholders">username</p>
-      </div>
+      
       </div>
       <div class="form-group">
+        <div class="form-row label-container">
+          <label for="username"><img src="https://imgur.com/48Tx8Ea.png" alt="Username"></label>
+          <input type="text" name="username" id="username" value ="{{current_user.username}}" readonly>
+          
+        </div>
       <div class="form-row label-container">
-          <label for="email">Email Address</label>
-          <br></br>
-          <p class="placeholders">emailaddress</p>
-      </div>
-      <div class="form-row label-container">
-          <label class="pword" for="password">Password</label>
-          <br></br>
-          <input type="password" placeholder="Password" name="password" id="password" required>
+        <label for="email"><img src="https://imgur.com/dMAxlSG.png" alt="Email Address"></label>
+        <input type="email" name="email" id="email" value ="{{current_user.email}}" readonly>
       </div>
       </div>
-      <button type="submit">Submit</button>
     </form>
   </div>
+  {%endif%}
 {% endblock %}

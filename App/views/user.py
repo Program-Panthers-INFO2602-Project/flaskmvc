@@ -41,4 +41,4 @@ def homepage_view():
 @user_views.route('/account', methods = ['GET'])
 @login_required
 def account_view():
-    render_template('account.html')
+    return render_template('account.html')
