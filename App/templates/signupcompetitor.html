@@ -44,19 +44,34 @@
     width: 100%;
     padding: 10px;
     border: 1px solid lightgray;
-    border-radius: 5px;
+    border-radius: 20px;
     box-sizing: border-box;
     margin-bottom: 20px;
+    text-align: center;
+    font-size: small;
+    font-family: "Metamorphous", cursive;
+  }
+
+  input:hover, input:active{
+    font-size: 15px;
+    transition: 0.4s ease-in-out;
   }
   
   button {
     background-color: #6dbfb8;
     color: black;
     padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
+    border: 2px solid #243246;
+    border-radius: 20px;
     cursor: pointer;
-    margin-top: 20px;
+    margin-top: 10px;
+    font-family: "Metamorphous", cursive;
+  }
+
+  button:hover{
+    font-size: 16px;
+    background-color: #5eaaa4; 
+    transition: 0.5s ease-in-out;
   }
 
   .form-row {
@@ -89,7 +104,26 @@
   #banner img{
       max-height: 100%;
   }
-{% endblock %}
+
+  a{
+    font-size: small;
+    color: #6dbfb8;
+  }
+
+  a:hover{
+      color: lightgray;
+      font-size: medium;
+      transition: 0.5s;
+  }
+
+  p, span, a{
+    font-family: 'Metamorphous', cursive;
+    font-size:small;
+    display: contents;
+  }
+
+  
+  {% endblock %}
 
 {% block content %}
 <div class="signup-container">
@@ -121,7 +155,10 @@
         </div>
         </div>
         <button type="submit">Sign Up!</button>
+
+        <span>Have an account? Go</span> <a href="/">back to Login!</a>
     </form>
+
 </div>
 
 {% endblock %}

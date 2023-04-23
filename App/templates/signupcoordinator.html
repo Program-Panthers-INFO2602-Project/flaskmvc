@@ -102,6 +102,23 @@
   #banner img{
       max-height: 100%;
   }
+
+  a{
+    font-size: small;
+    color: #6dbfb8;
+  }
+
+  a:hover{
+      color: lightgray;
+      font-size: medium;
+      transition: 0.5s;
+  }
+
+  p, span, a{
+    font-family: 'Metamorphous', cursive;
+    font-size:small;
+    display: contents;
+  }
 {% endblock %}
 
 {% block content %}
@@ -144,6 +161,7 @@
 
       <button type="submit">Sign Up!</button>
       
+      <span>Have an account? Go</span> <a href="/">back to Login!</a>
     </form>
 </div>
 

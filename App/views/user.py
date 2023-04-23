@@ -5,16 +5,9 @@ from functools import wraps
 from .index import index_views
 from App.controllers import *
 from App.models import Organization
+from builtins import isinstance
 
 login_manager = LoginManager()
-
-def competitor_required(func):
-    @wraps(func)
-    def wrapper(*args, **kwargs):
-        if not current_user.is_authenticated or not isinstance(current_user, User):
-            return "Unauthorized", 401
-        return func(*args, **kwargs)
-    return wrapper
 
 def coordinator_required(func):
     @wraps(func)
@@ -35,26 +28,54 @@ user_views = Blueprint('user_views', __name__, template_folder='../templates')
 
 #shows home page with all organizations
 @user_views.route('/home', methods = ['GET'])
-@competitor_required
+@login_required
 def homepage_view():
     organizations = Organization.query.all()
-    return render_template("organizations.html", organizations = organizations)
+    user = Coordinator.query.filter_by(first_name = current_user.first_name).first()
+    if isinstance(user, Coordinator):
+        user_type = 'Coordinator'
+    else:
+        user_type = None
+
+    return render_template("organizations.html", organizations = organizations, user_type = user_type)
 
 
 @user_views.route('/<string:organization_name>/competitions', methods = ['GET'])
-@competitor_required
+@login_required
 def organization_competitions_view(organization_name):
     organization = Organization.query.filter_by(name = organization_name).first()
-    return render_template("competitions.html", organization = organization_name, competitions = organization.competitions)
+    user = Coordinator.query.filter_by(first_name = current_user.first_name).first()
+    if isinstance(user, Coordinator):
+        user_type = 'Coordinator'
+    else:
+        user_type = None
+
+    return render_template("competitions.html", organization = organization_name, competitions = organization.competitions, user_type = user_type)
 
 
-@user_views.route('/<string:competition_name>', methods = ['GET'])
-@competitor_required
+@user_views.route('/<string:competition_name>/results', methods = ['GET'])
+@login_required
 def competition_view(competition_name):
-    return render_template("competitionResults.html")
+    user = Coordinator.query.filter_by(first_name = current_user.first_name).first()
+    if isinstance(user, Coordinator):
+        user_type = 'Coordinator'
+    else:
+        user_type = None
+
+    competition = Competition.query.filter_by(name = competition_name).first()
+    organization = Organization.query.get(competition.organization_id)
+    organization_name = organization.name
+
+    return render_template("competitionResults.html", competition = competition, organization_name = organization_name, user_type = user_type)
+
 
 @user_views.route('/account', methods = ['GET'])
 @login_required
 def account_view():
-    
-    return render_template('account.html')
+    user = Coordinator.query.filter_by(first_name = current_user.first_name).first()
+    if isinstance(user, Coordinator):
+        user_type = 'Coordinator'
+    else:
+        user_type = None
+
+    return render_template('account.html', user_type = user_type)
