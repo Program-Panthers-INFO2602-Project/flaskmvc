@@ -12,91 +12,104 @@ nav {
     display: flex;
     justify-content: space-between;
   }
-  
-  nav ul {
+
+nav ul {
     list-style-type: none;
     margin: 0;
     padding: 0;
     display: flex;
     justify-content: space-between;
   }
-  
-  nav li {
+
+nav li {
     margin: 0 10px;
   }
-  
-  nav a {
+
+nav a {
     color: #fff;
     text-decoration: none;
   }
 
-  .nav-links {
+.nav-links {
     display: flex;
     align-items: center;
     list-style: none;
     margin: 0;
     padding: 0;
   }
-  
-  .nav-links-left {
+
+.nav-links-left {
     margin-right: auto;
   }
-  
-  .nav-links-right {
+
+.nav-links-right {
     margin-left: auto;
   }
-  
-  .nav-links li {
+
+.nav-links li {
     margin: 0 10px;
   }
-  
+
   .nav-links a {
     color: #fff;
     text-decoration: none;
   }
-  
-  header {
+
+header {
     background-color: #333;
     color: #fff;
     padding: 10px;
     text-align: center;
   }
 
-  #header {
+#header {
     text-align: center;
-    margin-top:60px;
+    margin-top:30px;
     padding: 20px;
   }
-  
-  #header h1 {
+
+#header h1 {
     margin: 0;
   }
-  
-  #search-container {
+
+#choose-menu{
+    flex-direction:column;
+  }
+
+#search-container {
     padding: 20px;
     text-align: center;
   }
-  
-  #search-input {
-    width: 40%;
+
+#search-input {
+    width: 85%;
+    max-width: 600px;
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
     border: 2px solid #ccc;
-    border-radius: 4px;
+    border-radius: 10px;
     outline: none;
+    text-align: center;
+    font-family: "Metamorphous", cursive;
+    font-size: medium;
   }
   
-  #button-container {
+#search-input:hover{
+    font-size: 18px;
+    transition: 0.5s;
+  }
+
+#button-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     padding: 20px;
   }
-  
-  .button {
+
+.button {
     background-color: #6dbfb8;
-    border: none;
+    border: solid 2px #282828;
     color: black;
     padding: 10px 20px;
     height:95px;
@@ -104,16 +117,24 @@ nav {
     text-align: center;
     text-decoration: none;
     display: inline-block;
-    font-size: 24px;
-    margin: 10px;
+    font-size: large;
+    margin: 5px;
     cursor: pointer;
     border-radius: 15px;
-    margin-top:-10px;
-    transition: background-color 0.3s;
+    margin-top: 5px;
+    font-family: "Metamorphous", cursive;
   }
-  
-  .button:hover {
-    background-color: #3e8e41;
+
+.button:hover{
+    font-size:22px;
+    width: 190px;
+    background-color: #5eaaa4;
+    transition: 0.5s;
+  }
+
+.button:active{
+      background-color: #92c3c0;
+      transition:0.2s;
   }
 {% endblock %}
 
@@ -132,20 +153,35 @@ nav {
 {% endblock %}
 
 {% block content %}
-<div id="header">
-    <h1>Choose an organization</h1>
+<div id="choose-menu">
+  <div id="header">
+    <h1>Choose an organization!</h1>
   </div>
   <div id="search-container">
     <input type="text" id="search-input" placeholder="Search organization by name">
   </div>
   <div id="button-container">
-    <button class="button">Button 1</button>
-    <button class="button">Button 2</button>
-    <button class="button">Button 3</button>
+    {% for name in competition_names %}
+      <button href="{{ url_for('competition_page', name=name) }}" class="button" id="{{name}}">{{ name }}</a>
+    {% endfor %}
   </div>
-  <div id="button-container">
-    <button class="button">Button 4</button>
-    <button class="button">Button 5</button>
-    <button class="button">Button 6</button>
-  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  const searchBar = document.querySelector("#search-input");
+  const buttonContainer = document.querySelector("#button-container");
+
+  searchBar.addEventListener("input", () => {
+    const searchText = searchBar.value.toLowerCase();
+    const buttons = buttonContainer.querySelectorAll("button");
+
+    buttons.forEach((button) => {
+      const buttonText = button.textContent.toLowerCase();
+
+      if (buttonText.includes(searchText)) {
+        buttonContainer.insertBefore(button, buttonContainer.firstChild);
+      }
+    });
+  });
 {% endblock %}
