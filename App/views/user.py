@@ -4,6 +4,7 @@ from flask_login import current_user, login_required, LoginManager, login_user, 
 
 from .index import index_views
 from App.controllers import *
+from App.models import Organization
 
 login_manager = LoginManager()
 
@@ -35,7 +36,8 @@ user_views = Blueprint('user_views', __name__, template_folder='../templates')
 #shows home page with all organizations
 @user_views.route('/home', methods = ['GET'])
 def homepage_view():
-    return render_template('organizations.html')
+    organizations = Organization.query.all()
+    return render_template("organizations.html", organizations = organizations)
 
 
 @user_views.route('/account', methods = ['GET'])

@@ -131,6 +131,7 @@ nav {
     border-radius: 15px;
     margin-top: 5px;
     font-family: "Metamorphous", cursive;
+    line-height: 95px;
   }
 
   .button:hover{
@@ -150,11 +151,11 @@ nav {
 <header>
     <nav>
       <ul class="nav-links nav-links-left">
-        <li><a href="#">Organizations</a></li>
+        <li><a href="/home">Organizations</a></li>
       </ul>
       <ul class="nav-links nav-links-right">
-        <li><a href="#">Account</a></li>
-        <li><a href="#">Log Out</a></li>
+        <li><a href="/account">Account</a></li>
+        <li><a href="/logout">Log Out</a></li>
       </ul>
     </nav>
 </header>
@@ -169,8 +170,8 @@ nav {
     <input type="text" id="search-input" placeholder="Search Organization">
   </div>
   <div id="button-container">
-    {% for name in competition_names %}
-      <button href="{{ url_for('competition_page', name=name) }}" class="button" id="{{name}}">{{ name }}</a>
+    {% for o in organizations%}
+      <a href="/account" class="button" id="{{o.name}}">{{ o.name }}</a>
     {% endfor %}
   </div>
 </div>
