@@ -87,6 +87,7 @@ def initialize():
             if team:
                 team.members.append(new_user)
             db.session.add(new_user)
+
     db.session.commit()
     print('database intialized')
 
@@ -109,6 +110,7 @@ def list_user_command(format):
         print(get_all_users())
     else:
         print(get_all_users_json())
+
 
 
 @user_cli.command("search_user", help="Search for user in database")

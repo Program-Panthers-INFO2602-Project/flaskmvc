@@ -77,4 +77,5 @@ def get_user(username):
 
 def get_coordinator(username):
     return Coordinator.query.filter_by(username = username).first()
-    
+
+
