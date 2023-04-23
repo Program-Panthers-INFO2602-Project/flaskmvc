@@ -6,6 +6,10 @@ def create_user(first_name, last_name, email, username, password):
     if user: 
         return None
     
+    user = User.query.filter_by(email = email).first()
+    if user: 
+        return None
+    
     newuser = RegularUser(first_name = first_name, last_name = last_name, email = email, username=username, password=password)
 
     try: 
@@ -18,25 +22,31 @@ def create_user(first_name, last_name, email, username, password):
 
 
 def create_coordinator(first_name, last_name, email, username, password, organization_name):
+ 
     coordinator = Coordinator.query.filter_by(username = username).first()
     if coordinator: 
         return None
-        
-    organization_id = Organization.query.filter_by(name = organization_name).first()
-    if not organization_id:
+    
+    coordinator = Coordinator.query.filter_by(email = email).first()
+    if coordinator: 
+        return None
+
+    organization = Organization.query.filter_by(name = organization_name).first()
+    
+    if not organization:
         organization = Organization(name = organization_name)
         db.session.add(organization)
         db.session.commit()
-
         organization_id = organization.id
-        
+    else:
+        organization_id = organization.id    
+
     newcoordinator = Coordinator(first_name = first_name, last_name = last_name, email = email, username=username, password=password, organization_id = organization_id)
-    
     try:
         db.session.add(newcoordinator)
         db.session.commit()
         return newcoordinator
-    except Exception: 
+    except Exception as e: 
         db.session.rollback()
         return None
     

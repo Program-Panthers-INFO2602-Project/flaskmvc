@@ -51,7 +51,8 @@ def signup_coordinator_action():
 
     newcoordinator = signup_coordinator(data['first_name'], data['last_name'], data['email'], data['username'],
                         data['password'], data['organization_name'])
-                         
+    
+
     if newcoordinator:
         login_user(newcoordinator)  # login the user
         flash('Account Created!')  # send message
@@ -64,17 +65,18 @@ def signup_coordinator_action():
 @auth_views.route('/login', methods=['POST'])
 def login_action():
     data = request.form
-    user = login_competitor(data['username'], data['password'])
-    if user:
-        flash('Logged in successfully.')  
-        login_user(user)  
-        return redirect('/home') # redirect to hompage
 
     coordinator = login_coordinator(data['username'], data['password'])
     if coordinator:
         flash('Logged in successfully.')
         login_user(coordinator)
         return redirect('/coordinator')
+
+    user = login_competitor(data['username'], data['password'])
+    if user:
+        flash('Logged in successfully.')  
+        login_user(user)  
+        return redirect('/home') # redirect to hompage
 
     flash('Invalid username or password') # send message to next page
     return redirect('/')
@@ -86,3 +88,30 @@ def logout_action():
   flash('Logged Out')
   return redirect('/')
 
+'''
+API Routes
+'''
+
+@auth_views.route('/api/users', methods=['GET'])
+def get_users_action():
+    users = get_all_users_json()
+    return jsonify(users)
+
+@auth_views.route('/api/users', methods=['POST'])
+def create_user_endpoint():
+    data = request.json
+    create_user(data['username'], data['password'])
+    return jsonify({'message': f"user {data['username']} created"})
+
+@auth_views.route('/api/login', methods=['POST'])
+def user_login_api():
+  data = request.json
+  token = jwt_authenticate(data['username'], data['password'])
+  if not token:
+    return jsonify(message='bad username or password given'), 401
+  return jsonify(access_token=token)
+
+@auth_views.route('/api/identify', methods=['GET'])
+@jwt_required()
+def identify_user_action():
+    return jsonify({'message': f"username: {jwt_current_user.username}, id : {jwt_current_user.id}"})
