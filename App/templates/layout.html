@@ -85,7 +85,6 @@
         justify-content: center;
         align-items: center;
         flex-wrap: wrap;
-        padding-top: 70px;
         padding-bottom: 70px;
         background-color: #243246;
       }
@@ -215,4 +214,7 @@
     var flashMessage = document.getElementById("flash-message");
     flashMessage.parentNode.removeChild(flashMessage);
   }
+  
+  {% block scripts %}
+  {% endblock %}
   </script>  
