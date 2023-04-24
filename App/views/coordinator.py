@@ -8,7 +8,10 @@ coordinator_views = Blueprint('coordinator_views', __name__, template_folder='..
 
 @coordinator_views.route('/coordinator', methods = ['GET'])
 def coordinator_view():
-    return render_template('ResultsManager.html')
+    user = Coordinator.query.filter_by(first_name = current_user.first_name).first()
+    organization = Organization.query.get(user.organization_id)
+
+    return render_template('ResultsManager.html', organization = organization.name)
 
 
 @coordinator_views.route('/coordinator/add-competition', methods = ['GET'])
@@ -37,13 +40,21 @@ def dashboard_view(competition_name):
         user_type = 'Coordinator'
     else:
         user_type = None
+    
+    
 
     return render_template('dashboard.html', competition = competition_name, user_type = user_type)
 
 
 @coordinator_views.route('/<string:competition_name>/manage-results', methods = ['GET'])
-def manage_competition_view():
+def manage_results_view(competition_name):
     user = Coordinator.query.filter_by(first_name = current_user.first_name).first()
-    return render_template('editCompetition.html')
+    if isinstance(user, Coordinator):
+        user_type = 'Coordinator'
+    else:
+        user_type = None
+    
+
+    return render_template('manageCompetitionResults.html', user_type = user_type)
 
 
