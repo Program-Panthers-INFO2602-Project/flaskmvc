@@ -23,7 +23,7 @@
     padding: 3px;
     text-align: center;
     position: relative;
-    margin-top: 85px;
+    margin-top: 65px;
     top: 100%;
     height: 30px;
     z-index: 2;
@@ -143,6 +143,16 @@
     font-size: 18px;
   }
 
+  a{
+    color: black;
+    text-decoration: none;
+  }
+
+  a:hover{
+    text-decoration:underline;
+    transition: 0.2s;
+  }
+
   th:hover{
     font-size: 19px;
     transition: 0.4s;
@@ -166,6 +176,7 @@
   #searchedRow{
     font-size: 16px;
   }
+  
 {% endblock %}
 
 {% block nav %}
@@ -189,14 +200,14 @@
 
 {% block content %}
 <div style="text-align: center;">
- <h1>{{competition.name}}</h1>
+  <h1>COMPETITION 1</h1>
 </div>
 
 <div class="competition_info">
   <div style="margin-left:20px;">
     <p>Organization Name: {{organization_name}}</p>
-    <p>Start Time: {{competition.start_time }}</p>
-    <p>End Time: {{competition.end_time }}</p>
+    <p>Start Time: {{ start_time }}</p>
+    <p>End Time: {{ end_time }}</p>
   </div>
 </div>
 
@@ -227,10 +238,10 @@
       </tr>
       {% for team in leaderboard %}
         <tr>
-          <td>{{ team.rank }}</td>
-          <td>{{ team.name }}</td>
+          <td><a href="teampage" id="{{team.name}}">{{ team.name }}</a></td>
           <td>{{ team.points }}</td>
           <td>{{ team.time_taken }}</td>
+          <td>{{ team.rank }}</td>
         </tr>
       {% endfor %}
     </tbody>
