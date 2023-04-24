@@ -83,6 +83,19 @@ def competition_view(competition_name):
 
     return render_template("competitionResults.html", competition = competition, competition_list = competition_list, organization_name = organization_name, user_type = user_type)
 
+@user_views.route('/<string:team_name>-results', methods = ['GET'])
+@login_required
+def team_view(team_name):
+    user = Coordinator.query.filter_by(first_name = current_user.first_name).first()
+    if isinstance(user, Coordinator):
+        user_type = 'Coordinator'
+    else:
+        user_type = None
+
+    team = Team.query.filter_by(team_name = team_name).first()
+
+    return render_template("competitionResultsTeamInfo.html", team = team, user_type = user_type)
+
 
 @user_views.route('/account', methods = ['GET'])
 @login_required

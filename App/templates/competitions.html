@@ -200,7 +200,11 @@ nav {
   <div id="button-container">
     {% if competitions%}
       {% for c in competitions%}
-        <a href="/{{c.name}}/results" class="button" id="{{c.name}}">{{ c.name }}</a>
+        {% if user_type == 'Coordinator' %}
+          <a href="/{{c.name}}/dashboard" class="button" id="{{c.name}}">{{ c.name }}</a>
+        {%else%}
+          <a href="/{{c.name}}/results" class="button" id="{{c.name}}">{{ c.name }}</a>
+        {%endif%}
       {% endfor %}
     {% else %}
       <div id="message">

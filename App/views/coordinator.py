@@ -30,23 +30,20 @@ def add_competition_action():
         return redirect('/coordinator')
 
 
+@coordinator_views.route('/<string:competition_name>/dashboard', methods = ['GET'])
+def dashboard_view(competition_name):
+    user = Coordinator.query.filter_by(first_name = current_user.first_name).first()
+    if isinstance(user, Coordinator):
+        user_type = 'Coordinator'
+    else:
+        user_type = None
 
-@coordinator_views.route('/coordinator/manage-competition', methods = ['GET'])
+    return render_template('dashboard.html', competition = competition_name, user_type = user_type)
+
+
+@coordinator_views.route('/<string:competition_name>/manage-results', methods = ['GET'])
 def manage_competition_view():
     user = Coordinator.query.filter_by(first_name = current_user.first_name).first()
     return render_template('editCompetition.html')
 
 
-@coordinator_views.route('/coordinator/manage-competition', methods = ['POST'])
-def manage_competition_action():
-    return render_template('editCompetition.html')
-
-
-
-@coordinator_views.route('/coordinator/add-team', methods = ['GET'])
-def add_team_view():
-    return render_template('addTeam.html')
-
-@coordinator_views.route('/coordinator/manage-team', methods = ['GET'])
-def manage_team_view():
-    return render_template('editTeam.html')
