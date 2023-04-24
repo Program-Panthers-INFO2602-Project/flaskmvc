@@ -22,7 +22,7 @@ def signup_coordinator(first_name, last_name, email, username, password, organiz
 
 
 def login_competitor(username, password):
-    user = RegularUser.query.filter_by(username=username).first()
+    user = User.query.filter_by(username=username).first()
     if user and user.check_password(password):
         return user
     return None
