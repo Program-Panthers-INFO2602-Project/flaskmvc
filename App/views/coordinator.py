@@ -33,7 +33,15 @@ def add_competition_action():
 
 @coordinator_views.route('/coordinator/manage-competition', methods = ['GET'])
 def manage_competition_view():
+    user = Coordinator.query.filter_by(first_name = current_user.first_name).first()
     return render_template('editCompetition.html')
+
+
+@coordinator_views.route('/coordinator/manage-competition', methods = ['POST'])
+def manage_competition_action():
+    return render_template('editCompetition.html')
+
+
 
 @coordinator_views.route('/coordinator/add-team', methods = ['GET'])
 def add_team_view():

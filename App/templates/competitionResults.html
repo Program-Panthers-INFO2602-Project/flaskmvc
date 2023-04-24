@@ -236,12 +236,13 @@
         <td><input class="search_team" id="searchInput" type="text" placeholder="Search" oninput="searchTeams()">
         </td>
       </tr>
-      {% for team in leaderboard %}
+      {% for t in competition_list%}
+      
         <tr>
-          <td><a href="teampage" id="{{team.name}}">{{ team.name }}</a></td>
-          <td>{{ team.points }}</td>
-          <td>{{ team.time_taken }}</td>
-          <td>{{ team.rank }}</td>
+          <td><a href="#" id="{{t.team.name}}"></a>{{ t.team_name}}</td>
+          <td>{{ t.points }}</td>
+          <td>{{ t.time_taken }}</td>
+          <td>{{ t.rank }}</td>
         </tr>
       {% endfor %}
     </tbody>

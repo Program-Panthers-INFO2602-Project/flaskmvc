@@ -1,5 +1,4 @@
 from .user import *
-from .leaderboard import *
 from .teamMember import *
 
 from .team import *
