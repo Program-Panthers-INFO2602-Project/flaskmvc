@@ -49,7 +49,7 @@ def organization_competitions_view(organization_name):
     else:
         user_type = None
 
-    return render_template("competitions.html", organization = organization_name, competitions = organization.competitions, user_type = user_type)
+    return render_template("competitions.html", organization = organization, competitions = organization.competitions, user = user, user_type = user_type)
 
 
 @user_views.route('/<string:competition_name>/results', methods = ['GET'])

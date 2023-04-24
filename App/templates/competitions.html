@@ -192,7 +192,7 @@ nav {
 {% block content %}
 <div id="choose-menu">
   <div id="header">
-    <h1>{{organization}} Competitions!</h1>
+    <h1>{{organization.name}} Competitions!</h1>
   </div>
   <div id="search-container">
     <input type="text" id="search-input" placeholder="Search Competitions">
@@ -200,7 +200,7 @@ nav {
   <div id="button-container">
     {% if competitions%}
       {% for c in competitions%}
-        {% if user_type == 'Coordinator' %}
+        {% if user_type == 'Coordinator' and organization.id == user.organization_id  %}
           <a href="/{{c.name}}/dashboard" class="button" id="{{c.name}}">{{ c.name }}</a>
         {%else%}
           <a href="/{{c.name}}/results" class="button" id="{{c.name}}">{{ c.name }}</a>
