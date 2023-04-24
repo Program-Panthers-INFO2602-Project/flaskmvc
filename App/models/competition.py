@@ -1,6 +1,7 @@
 from App.models import Team
 from App.database import db
 from datetime import time
+from sqlalchemy.ext.orderinglist import ordering_list
 
 class Competition(db.Model):
     id = db.Column(db.Integer, primary_key = True)
@@ -8,8 +9,8 @@ class Competition(db.Model):
     organization_id = db.Column(db.Integer,  db.ForeignKey('organization.id'), nullable = False, unique = False)
     start_time = db.Column(db.String, unique = False, nullable = False)
     end_time = db.Column(db.String, unique = False, nullable = False)
-    teams = db.relationship('Team', backref = 'competition', lazy = True)
-    leaderboard_entries = db.relationship('Team', secondary = 'leaderboard', backref = 'leaderboard_entry', lazy = True)
+    teams = db.relationship('Team', backref = 'competition', lazy = True, order_by = 'Team.rank')
+    #leaderboard_entries = db.relationship('Team', backref = 'competition_name', lazy = True)
 
     def __init__(self, name, organization_id, start_time, end_time):
         self.name = name

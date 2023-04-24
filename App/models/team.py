@@ -1,6 +1,6 @@
-from App.models import TeamMember
+from App.models import *
 from App.database import db
-from datetime import time
+from datetime import datetime, time
 
 class Team(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -8,6 +8,7 @@ class Team(db.Model):
     team_name = db.Column(db.String, nullable = False, unique = True)
     points = db.Column(db.Integer, unique = False, nullable = False)
     time_taken = db.Column(db.String, unique = False, nullable = True)
+    rank = db.Column(db.Integer, unique = False)
     members = db.relationship('User', secondary = 'team_member', backref = 'team', lazy = True)
 
 
@@ -16,10 +17,35 @@ class Team(db.Model):
         self.team_name = team_name
         self.points = points
         self.time_taken = time_taken
+        self.rank = 0
 
 
-    def calculate_rank(self, competition_id, points, time_taken):
-        competition = Competition.query.filter_by(id = competition_id)
+    def calculate_rank(self, teams, competition, points, time_taken):
+        time_obj = datetime.strptime(time_taken, "%H:%M").time()
+
+        rank = 1
+        for t in teams:
+            if t.points > points:
+                rank = rank + 1
+            elif t.points == points:
+                t_time = t.time_taken
+                t_time_obj = datetime.strptime(t_time, "%H:%M").time()
+
+                if time_obj > t_time_obj:
+                    rank = rank + 1
+        
+        #entry = LeaderBoard(competition.id, self.id, self.team_name, self.points, self.time_taken, rank)
+        self.rank = rank
+        #competition.leaderboard_entries.append(self)
+        return rank
+
+
+                
+
+
+
+
+
         
             
 

@@ -5,7 +5,6 @@ from functools import wraps
 from .index import index_views
 from App.controllers import *
 from App.models import Organization
-from builtins import isinstance
 
 login_manager = LoginManager()
 
@@ -61,12 +60,28 @@ def competition_view(competition_name):
         user_type = 'Coordinator'
     else:
         user_type = None
-
+    
     competition = Competition.query.filter_by(name = competition_name).first()
     organization = Organization.query.get(competition.organization_id)
     organization_name = organization.name
+    
+    teams = competition.teams
 
-    return render_template("competitionResults.html", competition = competition, organization_name = organization_name, user_type = user_type)
+    for t in teams:
+        rank = t.calculate_rank(teams, competition, t.points, t.time_taken)
+    
+    competition_list = []
+    count = len(competition.teams)
+    while count != 0:
+        for t in competition.teams:
+            if t.rank == count:
+                competition_list.append(t) 
+                count = count - 1
+                break
+
+    competition_list.reverse()
+
+    return render_template("competitionResults.html", competition = competition, competition_list = competition_list, organization_name = organization_name, user_type = user_type)
 
 
 @user_views.route('/account', methods = ['GET'])
