@@ -40,14 +40,6 @@ class Team(db.Model):
         return rank
 
 
-                
-
-
-
-
-
-        
-            
 
     def get_json(self):
         return{
