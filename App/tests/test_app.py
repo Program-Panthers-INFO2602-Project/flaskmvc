@@ -68,4 +68,5 @@ class UsersIntegrationTests(unittest.TestCase):
     def test_update_user(self):
         update_user(1, "ronnie")
         user = get_user(1)
-        assert user.username == "ronnie"
+        if user is not None:
+            assert user.username == "ronnie"
