@@ -79,7 +79,7 @@ def get_coordinator(username):
     return Coordinator.query.filter_by(username = username).first()
 
 def update_user(id, username):
-    user = User.query.get(user_id)
+    user = User.query.get(id)
     if user:
         user.username = username
         db.session.add(user)
