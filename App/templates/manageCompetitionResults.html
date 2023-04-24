@@ -63,16 +63,12 @@ nav {
     text-align: center;
   }
 
-  .main_content {
-    margin-top:-2em;
-    height:510px;
-}
-
 .button-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 10px;
   text-align: center;
+  margin-bottom:2em;
 }
 
 .button1, .button2, .button3, .button4 {
@@ -101,7 +97,11 @@ select{
 }
 
 .heading{
-  margin-top: 5em; 
+  margin-top: 1em; 
+}
+
+main{
+  margin-top:0%;
 }
 {% endblock %}
 
@@ -109,14 +109,14 @@ select{
 <header>
     <nav>
       <ul class="nav-links nav-links-left">
-        <li><a href="#">Organizations</a></li>
+        <li><a href="/home">Organizations</a></li>
       </ul>
       <ul class="nav-links">
-        <li><a href="#">Results Manager</li>
+        <li><a href="/coordinator">Results Manager</li>
       </ul>
       <ul class="nav-links nav-links-right">
-        <li><a href="#">Account</a></li>
-        <li><a href="#">Log Out</a></li>
+        <li><a href="/account">Account</a></li>
+        <li><a href="/logout">Log Out</a></li>
       </ul>
     </nav>
   </header>
